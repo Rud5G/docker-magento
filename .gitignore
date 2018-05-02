@@ -1,2 +1,4 @@
 /.composer/
 /html/
+/.modman/
+!/.modman/.basedir
