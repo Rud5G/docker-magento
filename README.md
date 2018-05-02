@@ -24,9 +24,17 @@ A collection of Docker images for running Magento application web servers and co
 
 # Usage
 
+
+## setup magento
+
     docker-compose up -d && docker-compose logs -f
+    sudo chown www-data ./html
     docker-compose run cli magerun install
     # install in ./html
+
+## setup modman modules
+
+    cd .modman && git clone https://github.com/Rud5G/TnetDev_ApplyUpdates && cd -
     docker-compose run cli modman deploy-all
     docker-compose run cli ls -ahls
     docker-compose run cli bash run-apply-updates.sh
