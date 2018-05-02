@@ -24,6 +24,14 @@ A collection of Docker images for running Magento application web servers and co
 
 # Usage
 
+    docker-compose up -d && docker-compose logs -f
+    docker-compose run cli magerun install
+    # install in ./html
+    docker-compose run cli modman deploy-all
+    docker-compose run cli ls -ahls
+    docker-compose run cli bash run-apply-updates.sh
+
+
 Since Magento requires several services working together, it recommended to use docker-compose with these images.
 
 See [docker-compose.yml](docker-compose.yml) for a sample configuration.
