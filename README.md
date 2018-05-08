@@ -30,20 +30,21 @@ A collection of Docker images for running Magento application web servers and co
     docker-compose up -d && docker-compose logs -f
     sudo chown www-data ./html
     docker-compose run cli magerun install
-    # install in ./html
+    # install in .
+    sudo cp html/errors/local.xml.sample html/errors/local.xml
 
 ## setup modman modules
 
     cd .modman && git clone https://github.com/Rud5G/TnetDev_ApplyUpdates && cd -
     docker-compose run cli modman deploy-all
     docker-compose run cli bash run-apply-updates.sh
-    docker-compose run cli magerun cache:clean
-    docker-compose run cli magerun dev:template-hints --on
-
-
-##
-    docker-compose run cli mageconfigsync dump
     docker-compose run cli mageconfigsync load --magento-root=/var/www/html /var/www/.modman/BaseConfig/config.yaml
+    docker-compose run cli magerun cache:clean
+
+## extra
+
+    docker-compose run cli mageconfigsync dump
+    docker-compose run cli magerun dev:template-hints --on
 
 Since Magento requires several services working together, it recommended to use docker-compose with these images.
 
